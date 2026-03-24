@@ -671,7 +671,7 @@ The sandbox IDE pattern is the right choice when:
 
 ## Best practices
 
-- **Sync files on every tool call**, not just when the run finishes. This
+- **Sync files on every relevant tool call**, not just when the run finishes. This
   makes the IDE feel live. Watch for `write_file`, `edit_file`, and `execute`
   tool messages and refresh immediately.
 - **Default to diff view for changed files**. When a user clicks a file that
