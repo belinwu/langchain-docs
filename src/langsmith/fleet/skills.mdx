@@ -3,23 +3,69 @@ title: Skills
 description: Use skills to give your agents access to specific capabilities.
 ---
 
-Skills are a way to bundle capabilities and provide more specific information in situations where the context is not universally relevant.
+Skills are reusable capabilities that provide specialized workflows and domain knowledge to your agent. Each skill is stored in the agent's long-term memory at `memories/skills/<skill-name>` and is only loaded when the agent determines it's relevant to the current task.
 
 Using skills can help:
 
-- Save on token usage by only providing the context that is relevant to the current task.
+- Save on token usage by only providing context relevant to the current task.
 - Prevent the agent from having too much context in the system prompt, which can lead to hallucinations and incorrect responses.
 
-For more information, see [Skills](/oss/deepagents/skills).
+<Info>
+Fleet skills are built on [Deep Agents](/oss/deepagents/skills) and follow the [Agent Skills specification](https://agentskills.io/specification). For details on skill structure, the `SKILL.md` format, and authoring best practices, see the [Deep Agents skills documentation](/oss/deepagents/skills).
+</Info>
 
 ## Create a skill
 
 You can create a skill two ways:
 
-- With AI: Use natural language to describe the skill and the agent will create the skill for you.
-- Manually: Create a skill directory with a `SKILL.md` file and any additional resources you need.
+- **With AI**: Use natural language to describe the skill and the agent will create it for you.
+- **Manually**: Create a skill with a `SKILL.md` file and any additional resources you need.
+
+<Note>
+Skills are **private** to the agent they belong to. Each agent has its own set of skills stored in its long-term memory, and no other agent can access them.
+</Note>
+
+<Tabs>
+    <Tab title="With AI">
+
+    In [Fleet](https://smith.langchain.com/agents), select the agent to which you want to add the skill. In the chat, prompt the agent to create a skill. For example:
+
+    <Prompt description="Create a skill that helps the agent use the web to research a topic.">
+    Create a skill that helps the agent use the web to research a topic. Use when asked to research a topic, person, company, technology, event, or any question that requires gathering and synthesizing information from the web. Covers news lookups, competitive analysis, background research, and fact-finding tasks. Prefer `tavily_web_search` for most queries.
+    </Prompt>
+
+    </Tab>
+    <Tab title="Manually">
+
+    <Steps>
+      <Step title="Select the agent">
+        In [Fleet](https://smith.langchain.com/agents), select the agent to which you want to add the skill.
+      </Step>
+      <Step title="Create the skill">
+        In the graph view, navigate to the **Skills** section and click <Icon icon="pencil"/> **Create**.
+      </Step>
+      <Step title="Enter the skill details">
+        1. Enter the skill name.
+        2. Add a short description of the skill.
+        3. Write the instructions for the skill.
+        4. Click **Save Changes**.
+      </Step>
+    </Steps>
+
+    </Tab>
+</Tabs>
 
 ## Edit a skill
 
+1. In [Fleet](https://smith.langchain.com/agents), select the agent to edit.
+1. Click the <Icon icon="pencil"/> **Edit Agent** icon.
+1. In the graph view, navigate to the **Skills** section and select the skill you want to edit.
+1. Update the skill name, description, or instructions.
+1. Click **Save Changes**.
 
-## Share a skill
+## Delete a skill
+
+1. In [Fleet](https://smith.langchain.com/agents), select the agent to which the skill belongs.
+1. Click the <Icon icon="pencil"/> **Edit Agent** icon.
+1. In the graph view, navigate to the **Skills** section.
+1. For the skill you want to delete, click the <Icon icon="trash"/> **Delete skill** icon.
