@@ -10,14 +10,16 @@ Using skills can help:
 - Save on token usage by only providing context relevant to the current task.
 - Prevent the agent from having too much context in the system prompt, which can lead to hallucinations and incorrect responses.
 
+<Info>
+Fleet skills are built on [Deep Agents](/oss/deepagents/skills) and follow the [Agent Skills specification](https://agentskills.io/specification). For details on skill structure, the `SKILL.md` format, and authoring best practices, see the [Deep Agents skills documentation](/oss/deepagents/skills).
+</Info>
+
+## Private vs. shared skills
+
 Skills can be **private** to a single agent or **shared** across a workspace:
 
 - **Private skills** are stored in the agent's long-term memory. Only that agent can access them.
 - **Shared skills** appear on the [**Skills**](https://smith.langchain.com/agents/skills) page and can be added to any agent in the workspace. The general-purpose chat also has access to your workspace's shared skills automatically. Shared skills stay in sync as they are updated.
-
-<Info>
-Fleet skills are built on [Deep Agents](/oss/deepagents/skills) and follow the [Agent Skills specification](https://agentskills.io/specification). For details on skill structure, the `SKILL.md` format, and authoring best practices, see the [Deep Agents skills documentation](/oss/deepagents/skills).
-</Info>
 
 ## Create a skill
 
