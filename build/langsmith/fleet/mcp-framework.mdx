@@ -14,7 +14,7 @@ If you're using [Fleet](/langsmith/fleet/index), you don't need to interact with
 However, you can configure the associated tool server instance as an MCP server, which will allow you to use your custom MCP servers in your agent.
 </Note>
 
-Download the [PyPi package](https://pypi.org/project/langsmith-tool-server/) to get started.
+Download the [PyPI package](https://pypi.org/project/langsmith-tool-server/) to get started.
 
 ## Create a custom toolkit
 
@@ -46,7 +46,7 @@ my-toolkit/
         └── ...
 ```
 
-Define your tools using the `@tool` decorator:
+Define your tools using the `@tool` decorator. For more on tool schemas, return values, error handling, and `ToolRuntime`, see the [Tools guide](/oss/python/langchain/tools).
 
 ```python
 from langsmith_tool_server import tool
@@ -184,10 +184,10 @@ The handler runs on every request and must return a dict with `identity` (and op
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/fleet/mcp-framework.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/fleet/mcp-framework.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

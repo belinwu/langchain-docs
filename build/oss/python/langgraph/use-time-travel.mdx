@@ -31,7 +31,7 @@ Use [`get_state_history`](https://reference.langchain.com/python/langgraph/graph
 from langgraph.graph import StateGraph, START
 from langgraph.checkpoint.memory import InMemorySaver
 from typing_extensions import TypedDict, NotRequired
-import uuid
+from langchain_core.utils.uuid import uuid7
 
 class State(TypedDict):
     topic: NotRequired[str]
@@ -57,7 +57,7 @@ graph = (
 )
 
 # Step 1: Run the graph
-config = {"configurable": {"thread_id": str(uuid.uuid4())}}
+config = {"configurable": {"thread_id": str(uuid7())}}
 result = graph.invoke({}, config)
 
 # Step 2: Find a checkpoint to replay from
@@ -319,10 +319,10 @@ See [subgraph persistence](/oss/python/langgraph/use-subgraphs#subgraph-persiste
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-time-travel.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-time-travel.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

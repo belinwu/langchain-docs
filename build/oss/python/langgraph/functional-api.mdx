@@ -79,7 +79,7 @@ def workflow(topic: str) -> dict:
 
   ```python
   import time
-  import uuid
+  from langchain_core.utils.uuid import uuid7
   from langgraph.func import entrypoint, task
   from langgraph.types import interrupt
   from langgraph.checkpoint.memory import InMemorySaver
@@ -112,7 +112,7 @@ def workflow(topic: str) -> dict:
       }
 
 
-  thread_id = str(uuid.uuid4())
+  thread_id = str(uuid7())
   config = {"configurable": {"thread_id": thread_id}}
   for item in workflow.stream("cat", config):
       print(item)
@@ -718,10 +718,10 @@ Please read the section on [determinism](#determinism) for more details.
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/functional-api.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/functional-api.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

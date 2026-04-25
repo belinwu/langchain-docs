@@ -379,7 +379,7 @@ total_cost = input_cost + output_cost  # 6.5e-5
 When using a custom model, the following fields need to be specified in a [run's metadata](/langsmith/add-metadata-tags) in order to associate token counts with costs. It's also helpful to provide these metadata fields to identify the model when viewing traces and when filtering.
 
 - `ls_provider`: The provider of the model, e.g., “openai”, “anthropic”
-- `ls_model_name`: The name of the model, e.g., “gpt-4.1-mini”, “claude-3-opus-20240229”
+- `ls_model_name`: The name of the model, e.g., “gpt-5.4-mini”, “claude-3-opus-20240229”
 
 
 **3. Set model prices**
@@ -671,10 +671,10 @@ const toolResponse = await getWeather({ city: "San Francisco" });
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/cost-tracking.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/cost-tracking.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

@@ -79,7 +79,8 @@
     }
   },
   "head": [
-    "<link rel=\"stylesheet\" href=\"/style.css\">"
+    "<link rel=\"stylesheet\" href=\"/style.css\">",
+    "<script src=\"/ChatLangChainEmbed.js\" defer></script>"
   ],
   "footer": {
     "links": [
@@ -99,8 +100,8 @@
             "href": "https://academy.langchain.com/"
           },
           {
-            "label": "Trust Center",
-            "href": "https://trust.langchain.com/"
+            "label": "Contact Sales",
+            "href": "https://www.langchain.com/contact-sales"
           }
         ]
       },
@@ -112,8 +113,8 @@
             "href": "https://langchain.com/"
           },
           {
-            "label": "About",
-            "href": "https://langchain.com/about"
+            "label": "Trust Center",
+            "href": "https://trust.langchain.com/"
           },
           {
             "label": "Careers",
@@ -139,11 +140,6 @@
   },
   "navbar": {
     "links": [
-      {
-        "label": "Ask AI",
-        "href": "https://chat.langchain.com/",
-        "icon": "message"
-      },
       {
         "label": "GitHub",
         "href": "https://github.com/langchain-ai",
@@ -206,10 +202,12 @@
                       "group": "Billing & usage",
                       "pages": [
                         "langsmith/billing",
+                        "langsmith/view-usage",
                         "langsmith/granular-usage"
                       ]
                     },
-                    "langsmith/manage-organization-by-api"
+                    "langsmith/manage-organization-by-api",
+                    "langsmith/audit-logs"
                   ]
                 },
                 {
@@ -224,8 +222,8 @@
                       "tag": "Private preview",
                       "pages": [
                         "langsmith/sandboxes",
-                        "langsmith/sandbox-templates",
-                        "langsmith/sandbox-warm-pools",
+                        "langsmith/sandbox-snapshots",
+                        "langsmith/sandbox-service-urls",
                         "langsmith/sandbox-auth-proxy",
                         "langsmith/sandbox-sdk"
                       ]
@@ -330,7 +328,6 @@
                         "langsmith/log-llm-trace",
                         "langsmith/log-retriever-trace",
                         "langsmith/ls-metadata-parameters",
-                        "langsmith/custom-run-id",
                         "langsmith/upload-files-with-traces"
                       ]
                     },
@@ -364,7 +361,8 @@
                       "group": "Data & privacy",
                       "pages": [
                         "langsmith/add-metadata-tags",
-                        "langsmith/mask-inputs-outputs"
+                        "langsmith/mask-inputs-outputs",
+                        "langsmith/otel-gateway-trace-redaction"
                       ]
                     },
                     {
@@ -406,7 +404,9 @@
                 {
                   "group": "Feedback & evaluation",
                   "pages": [
+                    "langsmith/evaluators",
                     "langsmith/attach-user-feedback",
+                    "langsmith/presigned-feedback-tokens",
                     {
                       "group": "Set up online evaluators",
                       "pages": [
@@ -729,8 +729,8 @@
                   "group": "Deployment guides",
                   "pages": [
                     "langsmith/deploy-to-cloud",
-                    "langsmith/deploy-with-control-plane",
                     "langsmith/deploy-standalone-server",
+                    "langsmith/deploy-with-control-plane",
                     "langsmith/diagnostics-self-hosted"
                   ]
                 },
@@ -804,14 +804,7 @@
                     {
                       "group": "Setup guides",
                       "pages": [
-                        {
-                          "group": "LangSmith",
-                          "icon": "server",
-                          "pages": [
-                            "langsmith/kubernetes",
-                            "langsmith/docker"
-                          ]
-                        },
+                        "langsmith/kubernetes",
                         "langsmith/deploy-self-hosted-full-platform",
                         {
                           "group": "Manage an installation",
@@ -822,22 +815,16 @@
                             "langsmith/self-host-organization-charts",
                             "langsmith/langsmith-managed-clickhouse",
                             "langsmith/self-host-ingress",
-                            "langsmith/self-host-mirroring-images"
+                            "langsmith/self-host-mirroring-images",
+                            "langsmith/self-host-fips"
                           ]
                         }
                       ]
                     },
                     {
-                      "group": "Enable features",
-                      "pages": [
-                        "langsmith/fleet/self-hosted",
-                        "langsmith/insights-self-hosted",
-                        "langsmith/polly-self-hosted"
-                      ]
-                    },
-                    {
                       "group": "Configuration",
                       "pages": [
+                        "langsmith/llm-auth-proxy-self-hosted",
                         "langsmith/self-host-scale",
                         "langsmith/self-host-ttl",
                         "langsmith/custom-docker",
@@ -957,7 +944,7 @@
             {
               "group": "Configure",
               "pages": [
-                "langsmith/fleet/setup",
+                "langsmith/fleet/workspace-admin",
                 "langsmith/fleet/agent-identity",
                 "langsmith/fleet/manage-agent-settings"
               ]
@@ -968,9 +955,12 @@
                 "langsmith/fleet/tools",
                 "langsmith/fleet/channels",
                 "langsmith/fleet/schedules",
+                "langsmith/fleet/skills",
                 "langsmith/fleet/slack-app",
                 "langsmith/fleet/teams-app",
-                "langsmith/fleet/remote-mcp-servers"
+                "langsmith/fleet/remote-mcp-servers",
+                "langsmith/fleet/arcade",
+                "langsmith/fleet/salesforce"
               ]
             },
             {
@@ -985,6 +975,7 @@
             {
               "group": "Additional resources",
               "pages": [
+                "langsmith/fleet/access-and-oversight",
                 "langsmith/fleet/pricing-faq",
                 "langsmith/fleet/self-hosted-link"
               ]
@@ -1017,6 +1008,13 @@
                       ]
                     },
                     {
+                      "group": "Deployment",
+                      "pages": [
+                        "oss/python/deepagents/deploy",
+                        "oss/python/deepagents/going-to-production"
+                      ]
+                    },
+                    {
                       "group": "Core capabilities",
                       "pages": [
                         "oss/python/deepagents/harness",
@@ -1026,7 +1024,8 @@
                         "oss/python/deepagents/subagents",
                         "oss/python/deepagents/async-subagents",
                         "oss/python/deepagents/human-in-the-loop",
-                        "oss/python/deepagents/long-term-memory",
+                        "oss/python/deepagents/permissions",
+                        "oss/python/deepagents/memory",
                         "oss/python/deepagents/skills",
                         "oss/python/deepagents/sandboxes",
                         "oss/python/deepagents/streaming"
@@ -1036,14 +1035,22 @@
                       "group": "Frontend",
                       "pages": [
                         "oss/python/deepagents/frontend/overview",
-                        "oss/python/deepagents/frontend/subagent-streaming",
-                        "oss/python/deepagents/frontend/todo-list"
+                        {
+                          "group": "Patterns",
+                          "pages": [
+                            "oss/python/deepagents/frontend/subagent-streaming",
+                            "oss/python/deepagents/frontend/todo-list",
+                            "oss/python/deepagents/frontend/sandbox"
+                          ]
+                        }
                       ]
                     },
                     {
                       "group": "Protocols",
                       "pages": [
-                        "oss/python/deepagents/acp"
+                        "oss/python/deepagents/acp",
+                        "oss/python/deepagents/mcp",
+                        "oss/python/deepagents/a2a"
                       ]
                     },
                     {
@@ -1052,7 +1059,8 @@
                         "oss/python/deepagents/cli/overview",
                         "oss/python/deepagents/cli/providers",
                         "oss/python/deepagents/cli/configuration",
-                        "oss/python/deepagents/cli/mcp-tools"
+                        "oss/python/deepagents/cli/mcp-tools",
+                        "oss/python/deepagents/data-locations"
                       ]
                     }
                   ]
@@ -1112,10 +1120,11 @@
                         {
                           "group": "Integrations",
                           "pages": [
-                            "oss/javascript/langchain/frontend/integrations/overview",
-                            "oss/javascript/langchain/frontend/integrations/ai-elements",
-                            "oss/javascript/langchain/frontend/integrations/assistant-ui",
-                            "oss/javascript/langchain/frontend/integrations/openui"
+                            "oss/python/langchain/frontend/integrations/overview",
+                            "oss/python/langchain/frontend/integrations/copilotkit",
+                            "oss/python/langchain/frontend/integrations/ai-elements",
+                            "oss/python/langchain/frontend/integrations/assistant-ui",
+                            "oss/python/langchain/frontend/integrations/openui"
                           ]
                         }
                       ]
@@ -1287,7 +1296,8 @@
                           "expanded": true,
                           "pages": [
                             "oss/python/deepagents/data-analysis",
-                            "oss/python/deepagents/deep-research"
+                            "oss/python/deepagents/deep-research",
+                            "oss/python/deepagents/content-builder"
                           ]
                         },
                         {
@@ -1325,6 +1335,7 @@
                       "icon": "book",
                       "pages": [
                         "oss/python/concepts/products",
+                        "oss/python/concepts/providers-and-models",
                         "oss/python/langchain/component-architecture",
                         "oss/python/concepts/memory",
                         "oss/python/concepts/context",
@@ -1439,6 +1450,12 @@
                       ]
                     },
                     {
+                      "group": "Deployment",
+                      "pages": [
+                        "oss/javascript/deepagents/going-to-production"
+                      ]
+                    },
+                    {
                       "group": "Core capabilities",
                       "pages": [
                         "oss/javascript/deepagents/harness",
@@ -1448,31 +1465,42 @@
                         "oss/javascript/deepagents/subagents",
                         "oss/javascript/deepagents/async-subagents",
                         "oss/javascript/deepagents/human-in-the-loop",
-                        "oss/javascript/deepagents/long-term-memory",
+                        "oss/javascript/deepagents/memory",
                         "oss/javascript/deepagents/skills",
-                        "oss/javascript/deepagents/sandboxes"
+                        "oss/javascript/deepagents/sandboxes",
+                        "oss/javascript/deepagents/streaming"
                       ]
                     },
-                    "oss/javascript/deepagents/streaming",
                     {
                       "group": "Frontend",
                       "pages": [
                         "oss/javascript/deepagents/frontend/overview",
-                        "oss/javascript/deepagents/frontend/subagent-streaming",
-                        "oss/javascript/deepagents/frontend/todo-list"
+                        {
+                          "group": "Patterns",
+                          "pages": [
+                            "oss/javascript/deepagents/frontend/subagent-streaming",
+                            "oss/javascript/deepagents/frontend/todo-list",
+                            "oss/javascript/deepagents/frontend/sandbox"
+                          ]
+                        }
                       ]
                     },
                     {
                       "group": "Protocols",
                       "pages": [
-                        "oss/javascript/deepagents/acp"
+                        "oss/javascript/deepagents/acp",
+                        "oss/javascript/deepagents/mcp",
+                        "oss/javascript/deepagents/a2a"
                       ]
                     },
                     {
-                      "group": "Deep Agents CLI",
+                      "group": "Command line interface",
                       "pages": [
                         "oss/javascript/deepagents/cli/overview",
-                        "oss/javascript/deepagents/cli/providers"
+                        "oss/javascript/deepagents/cli/providers",
+                        "oss/javascript/deepagents/cli/configuration",
+                        "oss/javascript/deepagents/cli/mcp-tools",
+                        "oss/javascript/deepagents/data-locations"
                       ]
                     }
                   ]
@@ -1503,6 +1531,14 @@
                       ]
                     },
                     {
+                      "group": "Middleware",
+                      "pages": [
+                        "oss/javascript/langchain/middleware/overview",
+                        "oss/javascript/langchain/middleware/built-in",
+                        "oss/javascript/langchain/middleware/custom"
+                      ]
+                    },
+                    {
                       "group": "Frontend",
                       "pages": [
                         "oss/javascript/langchain/frontend/overview",
@@ -1525,19 +1561,12 @@
                           "group": "Integrations",
                           "pages": [
                             "oss/javascript/langchain/frontend/integrations/overview",
+                            "oss/javascript/langchain/frontend/integrations/copilotkit",
                             "oss/javascript/langchain/frontend/integrations/ai-elements",
                             "oss/javascript/langchain/frontend/integrations/assistant-ui",
                             "oss/javascript/langchain/frontend/integrations/openui"
                           ]
                         }
-                      ]
-                    },
-                    {
-                      "group": "Middleware",
-                      "pages": [
-                        "oss/javascript/langchain/middleware/overview",
-                        "oss/javascript/langchain/middleware/built-in",
-                        "oss/javascript/langchain/middleware/custom"
                       ]
                     },
                     {
@@ -1718,6 +1747,7 @@
                         "oss/javascript/integrations/tools/index",
                         "oss/javascript/integrations/llms/index",
                         "oss/javascript/integrations/middleware/index",
+                        "oss/javascript/integrations/sandboxes/index",
                         "oss/javascript/integrations/stores/index",
                         "oss/javascript/integrations/document_transformers/index",
                         "oss/javascript/integrations/llm_caching/index",
@@ -1750,7 +1780,8 @@
                           "group": "Deep Agents",
                           "expanded": true,
                           "pages": [
-                            "oss/javascript/deepagents/deep-research"
+                            "oss/javascript/deepagents/deep-research",
+                            "oss/javascript/deepagents/content-builder"
                           ]
                         },
                         {
@@ -1787,6 +1818,7 @@
                       "icon": "book",
                       "pages": [
                         "oss/javascript/concepts/products",
+                        "oss/javascript/concepts/providers-and-models",
                         "oss/javascript/langchain/component-architecture",
                         "oss/javascript/concepts/memory",
                         "oss/javascript/concepts/context",
@@ -1903,6 +1935,46 @@
   },
   "redirects": [
     {
+      "source": "/langsmith/sandbox-templates",
+      "destination": "/langsmith/sandbox-snapshots"
+    },
+    {
+      "source": "/langsmith/sandbox-warm-pools",
+      "destination": "/langsmith/sandbox-snapshots"
+    },
+    {
+      "source": "/langsmith/custom-run-id",
+      "destination": "/langsmith/annotate-code#specify-a-custom-run-id"
+    },
+    {
+      "source": "/langsmith/docker",
+      "destination": "/langsmith/self-hosted"
+    },
+    {
+      "source": "/oss/python/langgraph/memory",
+      "destination": "/oss/python/concepts/memory"
+    },
+    {
+      "source": "/oss/javascript/langgraph/memory",
+      "destination": "/oss/javascript/concepts/memory"
+    },
+    {
+      "source": "/oss/deepagents/memory",
+      "destination": "/oss/python/deepagents/memory"
+    },
+    {
+      "source": "/oss/deepagents/long-term-memory",
+      "destination": "/oss/python/deepagents/memory"
+    },
+    {
+      "source": "/oss/python/deepagents/long-term-memory",
+      "destination": "/oss/python/deepagents/memory"
+    },
+    {
+      "source": "/oss/javascript/deepagents/long-term-memory",
+      "destination": "/oss/javascript/deepagents/memory"
+    },
+    {
       "source": "/docs",
       "destination": "/"
     },
@@ -1928,10 +2000,6 @@
     },
     {
       "source": "/langsmith/langsmith-fetch",
-      "destination": "/langsmith/langsmith-cli"
-    },
-    {
-      "source": "/langsmith/langsmith-mcp-server",
       "destination": "/langsmith/langsmith-cli"
     },
     {
@@ -1980,7 +2048,7 @@
     },
     {
       "source": "/langsmith/agent-builder-setup",
-      "destination": "/langsmith/fleet/setup"
+      "destination": "/langsmith/fleet/workspace-admin"
     },
     {
       "source": "/langsmith/agent-builder-manage-agent-settings",
@@ -2028,7 +2096,19 @@
     },
     {
       "source": "/langsmith/agent-builder-self-hosted",
-      "destination": "/langsmith/fleet/self-hosted"
+      "destination": "/langsmith/deploy-self-hosted-full-platform#enable-fleet-insights-and-polly"
+    },
+    {
+      "source": "/langsmith/fleet/self-hosted",
+      "destination": "/langsmith/deploy-self-hosted-full-platform#enable-fleet-insights-and-polly"
+    },
+    {
+      "source": "/langsmith/insights-self-hosted",
+      "destination": "/langsmith/deploy-self-hosted-full-platform#enable-fleet-insights-and-polly"
+    },
+    {
+      "source": "/langsmith/polly-self-hosted",
+      "destination": "/langsmith/deploy-self-hosted-full-platform#enable-fleet-insights-and-polly"
     },
     {
       "source": "/labs/swe/:path*",
@@ -2121,6 +2201,14 @@
     {
       "source": "/python/deepagents",
       "destination": "/oss/python/deepagents/overview"
+    },
+    {
+      "source": "/oss/python/contributing/integrations",
+      "destination": "/oss/python/contributing/integrations-langchain"
+    },
+    {
+      "source": "/oss/javascript/contributing/integrations",
+      "destination": "/oss/javascript/contributing/integrations-langchain"
     },
     {
       "source": "/javascript/langchain",
@@ -2617,6 +2705,14 @@
     {
       "source": "/oss/python/langchain/frontend/integrations",
       "destination": "/oss/python/langchain/frontend/integrations/overview"
+    },
+    {
+      "source": "/langsmith/fleet/setup",
+      "destination": "/langsmith/fleet/workspace-admin"
+    },
+    {
+      "source": "/langsmith/fleet/workspace-settings",
+      "destination": "/langsmith/fleet/workspace-admin"
     }
   ]
 }

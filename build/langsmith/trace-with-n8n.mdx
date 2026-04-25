@@ -24,7 +24,7 @@ LangSmith tracing is available for **self-hosted n8n instances** only.
    - `LANGCHAIN_API_KEY` — Your LangSmith API key.
 
    Optional environment variables:
-   - `LANGCHAIN_ENDPOINT` — LangSmith API endpoint. Defaults to `https://api.smith.langchain.com`. Set this if using a self-hosted LangSmith instance or the EU region.
+   - `LANGCHAIN_ENDPOINT` — LangSmith API endpoint. Defaults to `https://api.smith.langchain.com`. Set this if using self-hosted LangSmith, the EU region (`https://eu.api.smith.langchain.com`), or AWS-hosted US SaaS (`https://aws.api.smith.langchain.com`).
    - `LANGCHAIN_PROJECT` — Project name for traces. Defaults to `"default"`.
    - `LANGCHAIN_CALLBACKS_BACKGROUND` — Set to `true` for asynchronous trace upload (default), or `false` for synchronous uploads. (default: `true`)
 
@@ -46,10 +46,10 @@ After running an AI workflow:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/trace-with-n8n.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/trace-with-n8n.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>
